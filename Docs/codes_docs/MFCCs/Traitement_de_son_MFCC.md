@@ -103,13 +103,16 @@ Chaque frame sera donc formé de 400 échantillons. L’expression “*espacés 
 
 Ici , vous pouvez visualiser deux frames correspondant respectivement aux périodes [1.00, 1.025] et [1.015,1.040].
 
+**Frame 0**
+
+
 ![frame40.png](../../Images/frame40.png)
 
-**Frame 0**
+**Frame 1**
 
 ![frame41.png](../../Images/frame41.png)
 
-**Frame 1**
+
 
 Il s’agit bien de deux frames successives.
 
@@ -151,15 +154,18 @@ et que x[0] = x[N-1]
 
 Voici l’image des deux frames précédentes après le fenêtrage d’Hamming:
 
-![fenatrageHammingFrame[1,1.025].png](../../Images/fenatrageHammingFrame11.025.png)
-
 **Frame 0**
 
-![fenatrageHammingFrame[1.015,1.040].png](../../Images/fenatrageHammingFrame1.0151.040.png)
+![fenatrageHammingFrame[1,1.025].png](../../Images/fenatrageHammingFrame11.025.png)
+
 
 **Frame 1**
 
+![fenatrageHammingFrame[1.015,1.040].png](../../Images/fenatrageHammingFrame1.0151.040.png)
+
+
 On peut voir sur les deux tracés que les deux frames se ressemblent( la N-périodicité ). Aussi, les bords de deux frames sont pratiquement nuls assurant ainsi la continuité. Passons à l’étape la plus importante de tout le traitement : la transformée discrète de Fourier .
+
 
 ## FFT (Fast Fourier Transform)
 
@@ -215,13 +221,15 @@ $$
 
 Voici le spectre fréquentiel des deux précédentes frames d’un son:
 
+**Frame 0**
+
 ![frame40spectrefrequentiel.png](../../Images/frame40spectrefrequentiel.png)
 
-Frame 0
+**Frame 1**
+    
 
 ![frame41spectrefrequentiel.png](../../Images/frame41spectrefrequentiel.png)
 
-Frame 1
 
 #### Remarque
 
@@ -547,4 +555,4 @@ Si aucune erreur → ✅ installation réussie.
 
 ## Pratique proprement dit
 
-Pour le reste , suivez les étapes dans le NoteBook qui vous été donné.
+Pour le reste , suivez les étapes dans le NoteBook qui vous  a été donné.
