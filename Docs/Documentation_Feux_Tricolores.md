@@ -216,8 +216,8 @@ eu un problème de mesure lorsqu’on cablait directement le capteur KY-038
 à l’ESP32 : les valeurs mesurées étaient constamment nulles. Donc pour
 garder l’efficacité en terme de calcul de l’ESP32 et la mesure qui a pu
 être testée avec l’Arduino, il a été décidé de faire communiquer par
-série (**UART**) l’Arduinoetl’ESP32detelle faconquel’Arduinomesure le
-signaletenvoie ces mesures à l’ESP32 qui lui gère une partie du
+série (**UART**) l’Arduino et l’ESP32 de telle facon que l’Arduino mesure le
+signal et envoie ces mesures à l’ESP32 qui lui gère une partie du
 traitement dont le résultat est renvoyé vers l’ordinateur ou la carte
 sur laquelle est inférée le modèle.
 
