@@ -1,0 +1,804 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation du système de feux tricolores intelligents">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Documentation Feux Tricolores - Feux Tricolores Intelligents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Feux Tricolores Intelligents" class="md-header__button md-logo" aria-label="Feux Tricolores Intelligents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Feux Tricolores Intelligents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documentation Feux Tricolores
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Cahier_charge_Feux_Tricolores/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1. Vision & Objectifs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../documentation-technique/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2. Documentation Technique
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ressources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3. Ressources & Recherches
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Feux Tricolores Intelligents" class="md-nav__button md-logo" aria-label="Feux Tricolores Intelligents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Feux Tricolores Intelligents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cahier_charge_Feux_Tricolores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Vision & Objectifs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-technique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Documentation Technique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Ressources & Recherches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Documentation Feux Tricolores</h1>
+
+<p><strong>PROJET</strong> <strong>FEUX</strong> <strong>TRICOLORES</strong> <strong>INTELLIGENTS</strong> </p>
+<p><em>Documentation</em>
+<em>technique</em> <em>du</em> <em>projet</em></p>
+<p><strong>1.</strong> <strong>Contexte</strong> <strong>et</strong> <strong>motivation</strong></p>
+<p>Au Bénin, un grand nombre d'accidents routiers est dû au non-respect des
+feux de signalisation, et ce malgré la présence des forces de l'ordre.</p>
+<p>Pour améliorer la sécurité routière, le projet propose un système
+capable d'imposer physiquement l'arrêt des conducteurs grâce à une
+barrière synchronisée avec les feux tricolores, tout en laissant passer
+les véhicules prioritaires (VP) grâce à une détection intelligente.</p>
+<p><strong>2.</strong> <strong>Objectifs</strong></p>
+<p><strong>Objectif</strong> <strong>général</strong></p>
+<p>Mettre en place un système automatisé permettant de réguler la
+circulation en contraignant les usagers à respecter les feux tricolores
+via une barrière mécanique pilotée par un microcontrôleur.</p>
+<p><strong>Objectifs</strong> <strong>spécifiques</strong></p>
+<ul>
+<li>
+<p>Détecter les véhicules prioritaires et leur attribuer un niveau de priorité. </p>
+</li>
+<li>
+<p>Modéliser le système en 3D et fabriquer les pièces
+ nécessaires.</p>
+</li>
+<li>
+<p>Concevoir le circuit électronique complet (capteurs, actionneurs, alimentation, VEROBOARD).</p>
+</li>
+</ul>
+<p><strong>3.</strong> <strong>Logique</strong> <strong>de</strong> <strong>fonctionnement</strong></p>
+<p>Le système considère une intersection à trois voies. Chaque voie est
+équipée :</p>
+<ul>
+<li>
+<p>d'un feu tricolore,</p>
+</li>
+<li>
+<p>d'une barrière motorisée contrôlée par le microcontrôleur</p>
+</li>
+<li>et d'un capteur de détection de véhicule prioritaire.</li>
+</ul>
+<p><strong>Fonctionnement</strong> <strong>normal</strong></p>
+<ul>
+<li>
+<p>Feu vert → barrière relevée.</p>
+</li>
+<li>
+<p>Feu rouge → barrière abaissée pour empêcher tout passage.</p>
+</li>
+<li>
+<p>Feu orange → barrière en cours de descente.</p>
+</li>
+</ul>
+<p><strong>Gestion</strong> <strong>des</strong> <strong>véhicules</strong> <strong>prioritaires</strong> <strong>(VP)</strong> </p>
+<p>Lorsqu'un véhicule prioritaire est détecté sur une voie :</p>
+<ul>
+<li>si le feu est rouge, il passe automatiquement au vert et la barrière se relève ; </li>
+<li>
+<p>les autres voies passent au rouge et leurs barrières se
+ baissent ;</p>
+</li>
+<li>
+<p>en cas de détection simultanée de plusieurs véhicules prioritaires,
+ le système choisit automatiquement celui ayant la priorité la plus
+ élevée.</p>
+</li>
+</ul>
+<p><strong>4.</strong> <strong>Étapes</strong></p>
+<p>Progrès actuels : un prototype du système a été réalisé en carton,
+recouvert de papier, avec feux et barrières imprimés en 3D. L'algorithme
+de gestion des feux et des barrières est déjà implémenté sous Arduino.</p>
+<p><strong>Étape</strong> <strong>1</strong> <strong>—</strong> <strong>Reprise</strong> <strong>et</strong> <strong>amélioration</strong> <strong>du</strong>
+<strong>code</strong> <strong>actuel</strong> <strong>(1</strong> <strong>semaine)</strong></p>
+<p>Consolidation et optimisation du code Arduino existant pilotant le
+prototype à trois voies.</p>
+<p><strong>Étape</strong> <strong>2</strong> <strong>—</strong> <strong>Reconnaissance</strong> <strong>des</strong> <strong>véhicules</strong>
+<strong>prioritaires</strong> </p>
+<p>Deux approches sont envisagées.</p>
+<p><strong>Méthode</strong> <strong>1</strong> <strong>:</strong> <strong>Détection</strong> <strong>par</strong> <strong>reconnaissance</strong>
+<strong>sonore</strong> <strong>via</strong> <strong>IA</strong> <strong>(3</strong> <strong>semaines)</strong></p>
+<ul>
+<li>
+<p>Identifier les grandeurs mesurables permettant de caractériser un
+son (fréquence, intensité, spectre, MFCC, etc.).</p>
+</li>
+<li>
+<p>Étudier le fonctionnement du capteur audio.</p>
+</li>
+<li>
+<p>Collecter les sons des différents véhicules prioritaires locaux (ambulance béninoise, police, sapeurs-pompiers...).</p>
+</li>
+<li>
+<p>Réaliser une analyse exploratoire (spectrogrammes, MFCC, pics fréquentiels)</p>
+</li>
+<li>Choisir un modèle adapté (CNN 1D, CNN 2D avec spectrogrammes, LSTM, etc.). </li>
+<li>Entraîner, valider et tester le modèle.</li>
+</ul>
+<p><strong>Méthode</strong> <strong>2</strong> <strong>:</strong> <strong>Détection</strong> <strong>par</strong> <strong>capteur</strong> <strong>de</strong>
+<strong>reconnaissance</strong> <strong>vocale</strong> <strong>(2</strong> <strong>semaines)</strong></p>
+<ul>
+<li>
+<p>Étudier le fonctionnement du capteur et valider sa compatibilité avec le microcontrôleur.</p>
+</li>
+<li>
+<p>Collecter les sons des véhicules prioritaires.</p>
+</li>
+<li>
+<p>Tester la reconnaissance en conditions réelles d'intersection.</p>
+</li>
+</ul>
+<p><strong>Étape</strong> <strong>3</strong> <strong>—</strong> <strong>Intégration</strong> <strong>complète</strong> <strong>dans</strong>
+<strong>l'algorithme</strong> <strong>de</strong> <strong>contrôle</strong> <strong>(2</strong> <strong>semaines)</strong></p>
+<ul>
+<li>
+<p>Synchronisation entre reconnaissance sonore, feux tricolores et barrières.</p>
+</li>
+<li>
+<p>Gestion des priorités multiples.</p>
+</li>
+<li>
+<p>Tests sur maquette.</p>
+</li>
+</ul>
+<p><strong>Étape</strong> <strong>4</strong> <strong>—</strong> <strong>Améliorations</strong> <strong>prévues</strong></p>
+<p><strong>Ajout</strong> <strong>de</strong> <strong>relais</strong> <strong>pour</strong> <strong>transférer</strong> <strong>le</strong> <strong>son</strong>
+<strong>jusqu'au</strong> <strong>microcontrôleur</strong> </p>
+<p>Permet de stabiliser la capture audio et d'éviter les perturbations.</p>
+<p><strong>Ajout</strong> <strong>d'une</strong> <strong>caméra</strong> <strong>pour</strong> <strong>vérifier</strong> <strong>l'identité</strong>
+<strong>du</strong> <strong>véhicule</strong></p>
+<p>Ce point répond au cas de l'imposteur : </p>
+<ul>
+<li>un véhicule non prioritaire
+pourrait émettre une sirène artificielle pour tromper le système. </li>
+<li>La caméra est placée à l'intersection des trois routes et peut effectuer
+une rotation à 360°.</li>
+</ul>
+<p>Ainsi :</p>
+<ul>
+<li>
+<p>une caméra ou un lecteur code-barres / QR est ajoutée ;</p>
+</li>
+<li>
+<p>chaque véhicule prioritaire possède un identifiant visuel (QR,marque distinctive) ;</p>
+</li>
+<li>
+<p>si le son détecté ne correspond pas au véhicule vu par la caméra → suspicion d'imposture ; </p>
+</li>
+<li>
+<p>le système peut alors capturer la plaque d'immatriculation pour enregistrement.</p>
+</li>
+</ul>
+<p><strong>Étape</strong> <strong>5</strong> <strong>—</strong> <strong>Modélisation</strong> <strong>3D</strong> <strong>et</strong> <strong>impression</strong></p>
+<ul>
+<li>Conception CAO complète du système (supports, feux, barrière,structure).</li>
+<li>Impression 3D des pièces.</li>
+</ul>
+<p><strong>Étape</strong> <strong>6</strong> <strong>—</strong> <strong>Conception</strong> <strong>du</strong> <strong>circuit</strong> <strong>imprimé</strong>
+<strong>(PCB)</strong></p>
+<ul>
+<li>
+<p>Architecture électronique : capteurs audio, caméra, microcontrôleur, servomoteurs, relais... • Schéma électronique puis routage PCB.</p>
+</li>
+<li>
+<p>Fabrication et test.</p>
+</li>
+<li>
+<p>Utiliser une alimentation se chargeant à partir d'énergie solaire.</p>
+</li>
+</ul>
+<p><strong>5.</strong> <strong>État</strong> <strong>de</strong> <strong>l'art</strong></p>
+<p><strong>Fabrication</strong> <strong>du</strong> <strong>système</strong> <strong>de</strong> <strong>3</strong> <strong>voies</strong> <strong>avec</strong>
+<strong>carton</strong> <strong>et</strong> <strong>impression</strong> <strong>3D</strong></p>
+<p>Le prototype actuel du système à trois voies a été réalisé en carton,
+recouvert de papier, avec les feux et les barrières imprimés en 3D. Il
+permet de valider la logique de fonctionnement (feux, barrières,
+priorités) avant la fabrication d'un système à l'échelle réelle.</p>
+<p><img alt="" src="../Images/image_FeuxTricolores.jpeg" /></p>
+<p><strong>Implémentation</strong> <strong>Arduino</strong> <strong>pour</strong> <strong>le</strong> <strong>système</strong> <strong>de</strong> <strong>3</strong>
+<strong>voies</strong></p>
+<p>L'algorithme de gestion des feux et des barrières est déjà implanté sur
+Arduino et pilote le prototype à trois voies (logique feu vert / orange
+/ rouge synchronisée avec la position des barrières sans la gestion des
+véhicules prioritaires).</p>
+<p><em>Fichier source</em> : <em>/codes_docs/feux_tricolores_simulation/feux_tricolores_simulation.ino</em></p>
+<p><strong>Code</strong> <strong>d'apprentissage</strong> <strong>du</strong> <strong>traitement</strong> <strong>de</strong> <strong>son</strong></p>
+<p>Ce module concerne le traitement des signaux sonores captés en vue de la
+reconnaissance des véhicules prioritaires (Méthode 1 de l'Étape 2 :
+extraction de caractéristiques audio, MFCC, entraînement d'un modèle de
+classification).Il vient avec un enregistrement d’un son grave comme
+enregistrement de test.</p>
+<p><em>Fichier source : /codes_docs/MFCCs/MFCCsTest.ipynb</em></p>
+<p><strong>Document</strong> <strong>explicatif</strong> <strong>pour</strong> <strong>le</strong> <strong>traitement</strong> <strong>de</strong>
+<strong>signal</strong></p>
+<p>Ce document présente la méthode des coefficients cepstraux à fréquence
+Mel (MFCC), utilisée pour caractériser les sons captés (sirènes des
+véhicules prioritaires) avant leur classification par le modèle de
+reconnaissance.</p>
+<p><em>Fichier source : /codes_docs/MFCCs/Traitement_de_son_MFCC.md</em></p>
+<p><strong>Capteur</strong> <strong>KY-038</strong></p>
+<p>Il s’agit des informations récoltés et codes écrits pour la mesure des
+signaux temporels des sons des véhicules via le capteur KY-038.</p>
+<p><strong>Câblage,</strong> <strong>fonctionnement</strong> <strong>et</strong> <strong>image</strong> <strong>du</strong> <strong>capteur</strong></p>
+<p><em>Fichier source : /codes_docs/KY-038_capteur_son.md</em></p>
+<p><strong>Codes</strong> <strong>Arduino</strong> <strong>d'obtention</strong> <strong>du</strong> <strong>spectre</strong> <strong>temporel</strong></p>
+<p>Ces codes permettent d'acquérir, via le capteur KY-038, le spectre
+temporel du son capté, utile pour l'analyse exploratoire évoquée à
+l'Étape 2.</p>
+<p>En effet, en se basant sur les caratéristiques matériels et les exigences de
+vitesse pour la reconnaissance en temps réel des véhicules prioritaires,
+on a décidé qu’il serait mieux d’utiliser un ESP32 plutot qu’un Arduino
+pour la mesure parce qu’il est plus rapide et plus performant. Mais il y
+eu un problème de mesure lorsqu’on cablait directement le capteur KY-038
+à l’ESP32 : les valeurs mesurées étaient constamment nulles. Donc pour
+garder l’efficacité en terme de calcul de l’ESP32 et la mesure qui a pu
+être testée avec l’Arduino, il a été décidé de faire communiquer par
+série (<strong>UART</strong>) l’Arduino et l’ESP32 de telle facon que l’Arduino mesure le
+signal et envoie ces mesures à l’ESP32 qui lui gère une partie du
+traitement dont le résultat est renvoyé vers l’ordinateur ou la carte
+sur laquelle est inférée le modèle.</p>
+<p>La figure suivante décrit le processus complet.
+<img alt="" src="../Images/arduino_esp32_uart_flow.png" /></p>
+<p><em>Fichiers sources</em> :</p>
+<p>- <em>/codes_docs/ESP32_spectre_temporel/ESP32_spectre_temporel.ino</em></p>
+<p>-<em>/codes_docs/ARDUINO_spectre_temporel/ARDUINO_spectre_temporel.ino</em></p>
+<p><strong>Base</strong> <strong>de</strong> <strong>sons</strong> <strong>de</strong> <strong>véhicules</strong> <strong>prioritaires</strong></p>
+<p>Les sons de certains véhicules prioritaires comme le SAMU, la police ont
+été récupérés et enregistrés dans le dossier sons.</p>
+<p><em>Fichiers sources: /sons</em></p>
+<p><strong>11.</strong> <strong>Analyses</strong> <strong>globales</strong></p>
+<p><strong>Analyse</strong> <strong>des</strong> <strong>contraintes</strong> <strong>et</strong> <strong>risques</strong></p>
+<p>Ces éléments sont issus du rapport de réunion du projet :</p>
+<ul>
+<li>
+<p>Priorité d'État : le projet, bien qu'utile, pourrait ne pas être
+ considéré comme une priorité absolue pour l'État en termes de
+ coût/utilité actuelle.</p>
+</li>
+<li>
+<p>Fiabilité des données : risque de construire une base de données
+ erronée si les capteurs ne sont pas correctement calibrés par rapport
+ aux standards commerciaux.</p>
+</li>
+</ul>
+<p><strong>Registre</strong> <strong>des</strong> <strong>questions</strong> <strong>posées</strong></p>
+<p>Plusieurs interrogations critiques ont été soulevées, nécessitant des
+réponses avant la phase suivante :</p>
+<ul>
+<li>
+<p>Viabilité budgétaire : le coût total du projet est-il supportable si
+ l'on doit déployer des moteurs, des barrières et des capteurs sur
+ l'ensemble du réseau national ?</p>
+</li>
+<li>
+<p>Unité de mesure acoustique : quelle unité doit être utilisée pour
+ les capteurs de son ? Le décibel (volume) ou l'unité d'amplitude
+ sonore ?</p>
+</li>
+<li>
+<p>Capacité technique : les capteurs de son de base sont-ils suffisants
+ pour les besoins du projet ?</p>
+</li>
+<li>
+<p>Spécifications des radars : quelle est la distance maximale de
+ capture des radars pour les véhicules en mouvement ?</p>
+</li>
+</ul>
+<p>Pour rappel,les pistes techniques suivantes ont égalementété discutées
+en réunionpour renforcer le système :</p>
+<ul>
+<li>
+<p>Intégration de radars et caméras : ajout de radars pour détecter les
+ excès de vitesse en amont et de caméras pour identifier les plaques
+ d'immatriculation en cas d'infraction au feu rouge.</p>
+</li>
+<li>
+<p>Optimisation du radar : utilisation de radars capables de flasher à
+ une distance maximale pour anticiper le freinage des conducteurs.</p>
+</li>
+<li>
+<p>Étalonnage des capteurs de son : utilisation d'un capteur commercial
+ standard comme référence pour vérifier la précision des valeurs
+ enregistrées par le prototype dans la base de données.</p>
+</li>
+<li>
+<p>Protocole de communication : utilisation de protocoles comme l'I2C
+ ou la communication série pour lier les composants électroniques.</p>
+</li>
+<li>
+<p>Priorité à la barrière physique : l'usage d'une barrière est jugé
+ plus efficace que les simples caméras (utilisées aux USA) car elle
+ impose l'arrêt physique du véhicule.</p>
+</li>
+</ul>
+<p><strong>12.</strong> <strong>Propositions</strong> <strong>de</strong> <strong>nouvelles</strong> <strong>orientations</strong> <strong>pour</strong>
+<strong>le</strong> <strong>projet</strong></p>
+<p><strong>1.</strong> <strong>Continuité</strong> <strong>du</strong> <strong>travail</strong> <strong>sur</strong> <strong>le</strong> <strong>modèle</strong> <strong>de</strong>
+<strong>reconnaissance</strong> <strong>de</strong> <strong>son</strong></p>
+<p><strong>2.</strong> <strong>Suppression</strong> <strong>des</strong> <strong>barrières</strong> <strong>et</strong> <strong>remplacement</strong> <strong>par</strong>
+<strong>une</strong> <strong>méthode</strong> <strong>basée</strong> <strong>sur</strong> <strong>la</strong> <strong>détection</strong> <strong>de</strong>
+<strong>plaque</strong> <strong>d'immatriculation</strong> <strong>par</strong> <strong>caméra</strong></p>
+<p>Cette orientation ferait évoluer le système d'un dispositif de
+contrainte physique (barrière) vers un dispositif de contrôle a
+posteriori par caméra, à l'image des systèmes utilisés aux États-Unis
+évoqués en réunion. Elle s'appuierait sur la brique caméra déjà
+envisagée à l'Étape 4 (identification visuelle des véhicules, capture de
+plaque d'immatriculation en cas d'infraction ou de suspicion
+d'imposture). </p>
+<p><strong><em>Note</em></strong> <strong><em>:</em></strong> <em>Cette</em> <em>piste</em> <em>répond</em> <em>en</em> <em>partie</em> <em>à</em> <em>la</em>
+<em>question</em> <em>de</em> <em>viabilité</em> <em>budgétaire</em> <em>soulevée</em> <em>en</em> <em>réunion,</em>
+<em>une</em> <em>caméra</em> <em>pouvant</em> <em>être</em> <em>moins</em> <em>coûteuse</em> <em>à</em> <em>déployer</em> <em>à</em>
+<em>grande</em> <em>échelle</em> <em>qu'une</em> <em>barrière</em> <em>motorisée,</em> <em>au</em> <em>prix</em> <em>d'un</em>
+<em>contrôle</em> <em>non</em> <em>plus</em> <em>préventif</em> <em>mais</em> <em>répressif.</em></p>
+<p><strong>3.</strong> <strong>Modèle</strong> <strong>d'IA</strong> <strong>de</strong> <strong>gestion</strong> <strong>de</strong> <strong>la</strong> <strong>densité</strong> <strong>du</strong>
+<strong>trafic</strong></p>
+<p>Il s’agit de développer un modèle d’IA particulièrement par
+apprentissage par renforcement pour gérer la congestion du traffic de
+manière optimale et automatique.</p>
+<p><strong>4.</strong> <strong>Fabrication</strong> <strong>locale</strong> <strong>des</strong> <strong>Feux</strong> <strong>Tricolores</strong></p>
+<p>Cette suggestion s’oriente dans la direction de la fabrication de Feux
+tricolores en exploitant les matériaux disponibles au Bénin.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

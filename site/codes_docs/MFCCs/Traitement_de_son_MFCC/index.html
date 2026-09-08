@@ -1,0 +1,1315 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation du système de feux tricolores intelligents">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Traitement de son (MFCC) - Feux Tricolores Intelligents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#traitement-de-son-mfcc" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Feux Tricolores Intelligents" class="md-header__button md-logo" aria-label="Feux Tricolores Intelligents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Feux Tricolores Intelligents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Traitement de son (MFCC)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Cahier_charge_Feux_Tricolores/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1. Vision & Objectifs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../documentation-technique/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2. Documentation Technique
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ressources/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3. Ressources & Recherches
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Feux Tricolores Intelligents" class="md-nav__button md-logo" aria-label="Feux Tricolores Intelligents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Feux Tricolores Intelligents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Cahier_charge_Feux_Tricolores/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Vision & Objectifs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../documentation-technique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Documentation Technique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Ressources & Recherches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-etude-theorique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        a. Etude théorique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapes-de-determination-des-mfccs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etapes de détermination des MFCCs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Etapes de détermination des MFCCs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signal-numerique-xn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal numérique x[n]
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decoupage-en-frames-de-20-25ms-espacees-de-10-ms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Découpage en frames de (20-25ms) espacées de 10 ms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fenetrage-de-hamming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fenêtrage de Hamming
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fft-fast-fourier-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FFT (Fast Fourier Transform)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFT (Fast Fourier Transform)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-xk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C’est quoi X[k]?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remarque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remarque
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#banques-filtres-de-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Banques Filtres de Mel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Banques Filtres de Mel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-a-t-on-besoin-de-banques-de-filtres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi a-t-on besoin de banques de filtres ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quest-ce-quune-banque-de-filtres-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qu’est-ce qu’une banque de filtres Mel ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-des-filtres-triangulaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi des filtres triangulaires ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placement-des-filtres-lidee-cle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placement des filtres : l’idée clé
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#construction-etape-par-etape-des-filtres-de-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Construction étape par étape des filtres de Mel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Construction étape par étape des filtres de Mel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conversion-hz-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Hz → Mel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-mel-hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Mel → Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definir-les-bornes-frequentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Définir les bornes fréquentielles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-des-bornes-en-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion des bornes en Mel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-points-mel-uniformes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Création des points Mel uniformes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-des-points-mel-en-hz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion des points Mel en Hz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-hz-indices-fft" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Hz → indices FFT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-du-filtre-triangulaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Définition du filtre triangulaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectrogramme-de-mel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrogramme de Mel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dct-transformee-discrete-de-cosinus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCT( Transformée Discrète de Cosinus )
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DCT( Transformée Discrète de Cosinus )">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-la-dct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi la DCT?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mfccs-coefficients-decorreles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MFCCs (coefficients décorrélés )
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MFCCs (coefficients décorrélés )">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#remarque_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remarque
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-phase-pratique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        b. Phase pratique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-de-librosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation de librosa
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation de librosa">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methode-recommandee-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Méthode recommandée (pip)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependances-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Dépendances importantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Vérification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pratique-proprement-dit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pratique proprement dit
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="traitement-de-son-mfcc">Traitement de son (MFCC)<a class="headerlink" href="#traitement-de-son-mfcc" title="Permanent link">&para;</a></h1>
+<h2 id="a-etude-theorique">a. Etude théorique<a class="headerlink" href="#a-etude-theorique" title="Permanent link">&para;</a></h2>
+<p>Comment distinguer un son d’un autre? Quelles valeurs mesurables peuvent être considérée  comme signature d’un son?</p>
+<p>Les <strong>MFCCs (Mel Frequency Cepstral  Coefficients)</strong>  arrivent à capturer les trois principales caractéristiques d’un son :</p>
+<p>-les harmoniques (les fréquences qui constituent ce son)</p>
+<p>-l’intensité relative de ces harmoniques </p>
+<p>-leur dynamique temporel (comment évoluent ces harmoniques dans le temps )</p>
+<h2 id="etapes-de-determination-des-mfccs"><strong>Etapes de détermination des MFCCs</strong><a class="headerlink" href="#etapes-de-determination-des-mfccs" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Signal numérique x[n]</strong></p>
+<p><strong>Découpage en frames de (20-25ms) espacées de 10 ms</strong></p>
+<p><strong>Fenêtrage de Hamming</strong> </p>
+<p><strong>FFT (Fast Fourier Transform)</strong></p>
+<p><strong>Banques Filtres de Mel</strong></p>
+<p><strong>Spectrogramme de Mel</strong></p>
+<p><strong>DCT( Transformée Discrète de Cosinus )</strong></p>
+<p><strong>MFCCs (coefficients décorrélés )</strong> </p>
+</blockquote>
+<p>Tout commence à partir d’un son qui, lorsqu’il est émis, applique une pression dans l’air mesurée, par un capteur ou un micro à une fréquence donnée. Cette fréquence est appelée <strong>Fréquence d’échantillonnage(Fe).</strong> Grâce à ce capteur, on obtient le son sous forme de fichier binaire avec une extension comme .wav, .aac, .mp3, .mp4 et autre. L’extension utilisée pour faire du traitement audio est le <strong>.wav</strong>.</p>
+<h3 id="signal-numerique-xn"><strong>Signal numérique x[n]</strong><a class="headerlink" href="#signal-numerique-xn" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Un fichier .wav se présente comme suit :</li>
+</ul>
+<div class="highlight"><pre><span></span><code>En tête: Fe 
+x[0],x[1],x[2],x[3],....
+</code></pre></div>
+<ol>
+<li><strong>Fe</strong> :  est la fréquence d’échantillonnage </li>
+<li><strong>x[k]:</strong> il s’agit de la mesure de l’amplitude du son à un instant <strong>k*Te</strong> avec <strong>Te</strong> la période de mesure <strong>(Te =1/Fe)</strong>.</li>
+</ol>
+<p>Par exemple,</p>
+<p><strong>x[0]:</strong> amplitude du son à 0 s</p>
+<p><strong>x[1] :</strong> amplitude du son à 1/Fe s</p>
+<p><strong>x[2]:</strong> amplitude du son à 2/Fe s</p>
+<p>Et donc la suite de mesures d’amplitude <strong>x[0],x[1],x[2],x[3],....</strong> est le <strong>signal numérique</strong> .Le signal numérique , c’est donc la courbe de l’amplitude du son en fonction du temps.</p>
+<p>C’est à partir du signal et de la fréquence d’échantillonnage Fe que tout le travail est développé. Donc la raison pour laquelle l’extension <strong>.wav</strong> est la plus utilisée en traitement audio est liée à la simplicité de l’extraction des données essentielles pour ce type de traitement.</p>
+<p>Voici le signal numérique d’un son grave enregistré par moi: </p>
+<p><img alt="signalNumerique.png" src="../../../Images/signalNumerique.png" /></p>
+<h3 id="decoupage-en-frames-de-20-25ms-espacees-de-10-ms">Découpage en frames de (20-25ms) espacées de 10 ms<a class="headerlink" href="#decoupage-en-frames-de-20-25ms-espacees-de-10-ms" title="Permanent link">&para;</a></h3>
+<p>Après avoir extrait le signal sonore , il faudra procéder à un découpage de ce dernier en de petits morceaux (<strong>frame</strong>) de même taille <strong>entremêlés</strong> lorsqu’ils sont consécutifs et espacés d’un pas. Il faut préciser que :</p>
+<ul>
+<li>la <strong>taille d’une frame</strong> ici fait référence au nombre de mesures d’amplitude par frame</li>
+<li>le <strong>pas</strong> revient au nombre de mesure d’amplitude qui séparent deux frames consécutives.</li>
+</ul>
+<p>Donc on considère un son :</p>
+<div class="highlight"><pre><span></span><code>Fe:16000 (Hz)
+x[0],x[1],x[2],x[3],...
+</code></pre></div>
+<p>Visuellement , les frames se présentent comme suit:</p>
+<div class="highlight"><pre><span></span><code>Frame 1:
+x[0],x[1],x[2],x[3],...,x[N-1] avec N=taille_frame
+Frame 2:
+x[0],x[1],x[2],x[3],...,x[N-1] avec N=taille_frame
+</code></pre></div>
+<p>Les indices utilisées sont propres à chaque frame et ne correspondent pas à la position générale des échantillons dans tout le signal numérique . </p>
+<p>Habituellement, on prend 25 ms comme la durée de chaque frame et 10 ms comme le pas. </p>
+<div class="highlight"><pre><span></span><code>taille_frame=0.025*Fe =0.025*16000=400
+
+pas=0.010*Fe=0.010*16000=160
+
+overlap=time_frame-pas_time=25-10=15 (recouvrement)
+
+taille_overlap=overlap*Fe=0.015*16000=240
+</code></pre></div>
+<p>Chaque frame sera donc formé de 400 échantillons. L’expression “<em>espacés de 10 ms</em>” signifie qu’à partir de la 15 (overlap) ième ms de la frame précédente, la frame suivante débute . Donc ca veut dire que deux frame successives partage 240 échantillons.</p>
+<p>Ici , vous pouvez visualiser deux frames correspondant respectivement aux périodes [1.00, 1.025] et [1.015,1.040].</p>
+<p><strong>Frame 0</strong></p>
+<p><img alt="frame40.png" src="../../../Images/frame40.png" /></p>
+<p><strong>Frame 1</strong></p>
+<p><img alt="frame41.png" src="../../../Images/frame41.png" /></p>
+<p>Il s’agit bien de deux frames successives.</p>
+<p><img alt="frame[1,1,040].png" src="../../../Images/frame11040.png" /></p>
+<p>Sur l’image juste au dessus , vous pouvez visualiser le recouvrement (<strong>overlap</strong>) entre ces deux frames. </p>
+<p>Si vous avez compris ca , alors la question que vous allez poser ,c’est : <strong>Pourquoi découpe  t-on des frames de 25 ms avec un pas de 10 ms ?</strong></p>
+<p><strong>Raisons</strong></p>
+<ul>
+<li><strong>Fenêtre de 25 ms (Frame Length)</strong> : On découpe le signal en segments de 25 ms car le signal de parole est considéré comme "stationnaire" (ses propriétés statistiques ne changent pas trop) sur de très courtes durées. Cela permet d'appliquer une transformée de Fourier efficace.</li>
+<li><strong>Pas de 10 ms (Frame Stride / Hop Size)</strong> : Le "pas" de 10 ms signifie qu'on commence une nouvelle frame toutes les 10 ms. Comme la fenêtre dure 25 ms, il y a un <strong>recouvrement (overlap)</strong> de 15 ms entre deux fenêtres successives. Ce recouvrement est crucial pour ne pas perdre d'information aux transitions et pour assurer une continuité lors de l'analyse fréquentielle.</li>
+</ul>
+<p>Donc on vient de découper notre signal numérique en H frames, chacune de N échantillons. On passe alors au fenêtrage d’Hamming.</p>
+<h3 id="fenetrage-de-hamming"><strong>Fenêtrage de Hamming</strong><a class="headerlink" href="#fenetrage-de-hamming" title="Permanent link">&para;</a></h3>
+<p>La fenêtre d’<strong>Hamming</strong> est définie comme suit:</p>
+<p>$$
+w[n] = 0.54 - 0.46 \cos!\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n \le N-1
+$$</p>
+<p>Le but est de rendre N-périodique  chaque frame du signal et d’adoucir les bords de chaque frame. Vous allez me demander pourquoi?</p>
+<p><strong>Simple!!!</strong></p>
+<p>En effet, après l’étape du découpage en frame , il y aura l’application de la transformée de Fourier pour obtenir le spectre fréquentiel (le diagramme des fréquences du son). Cette transformée suppose que le signal sonore entier  est <strong>N-périodique</strong> parce qu’elle le projette sur des sinusoides N-périodiques. Cela veut dire que toutes les frames se ressemblent et que les bords de chaque frame sont continues.</p>
+<p>Visuellement c’est que:</p>
+<div class="highlight"><pre><span></span><code>Pour k entre 0 et N-1,
+x[k]=x[k+N]
+
+et que x[0] = x[N-1]
+</code></pre></div>
+<p>Voici l’image des deux frames précédentes après le fenêtrage d’Hamming:</p>
+<p><strong>Frame 0</strong></p>
+<p><img alt="fenatrageHammingFrame[1,1.025].png" src="../../../Images/fenatrageHammingFrame11.025.png" /></p>
+<p><strong>Frame 1</strong></p>
+<p><img alt="fenatrageHammingFrame[1.015,1.040].png" src="../../../Images/fenatrageHammingFrame1.0151.040.png" /></p>
+<p>On peut voir sur les deux tracés que les deux frames se ressemblent( la N-périodicité ). Aussi, les bords de deux frames sont pratiquement nuls assurant ainsi la continuité. Passons à l’étape la plus importante de tout le traitement : la transformée discrète de Fourier .</p>
+<h2 id="fft-fast-fourier-transform">FFT (Fast Fourier Transform)<a class="headerlink" href="#fft-fast-fourier-transform" title="Permanent link">&para;</a></h2>
+<p><strong>FFT</strong> (Fast Fourier Transform) est le programme le plus rapide pour déterminer la transformée de Fourier discrète (<strong>DFT</strong> en anglais).  </p>
+<p>On considère une frame <strong>i</strong> parmi les H frames et contenant N mesures d’amplitude. </p>
+<p>On définit la FFT par : </p>
+<p>$$
+X[k] = \sum_{n=0}^{N-1} x[n]\, e^{-j \frac{2\pi}{N}kn}, \quad 0 \le k \le N-1
+$$</p>
+<p>Avec : </p>
+<p><strong>k</strong> : l’indice de la fréquence ( <strong>fk = k*Fs/NFFT</strong> ) avec NFFT≥ N </p>
+<p><strong>x[n]</strong> : l’amplitude mesurée à l’instant <strong>nTe</strong> avec <strong>Te = 1/Fs</strong></p>
+<p><strong>X[k]</strong> : nombre complexe </p>
+<h4 id="cest-quoi-xk">C’est quoi X[k]?<a class="headerlink" href="#cest-quoi-xk" title="Permanent link">&para;</a></h4>
+<p>Il correspond au nombre de sinusoïdes de la fréquence <strong>fk</strong> dans le signal.  Plus simplement, <strong>X[k]</strong> représente l’importance de la fréquence <strong>fk</strong> dans le son.</p>
+<p>Nous avons : </p>
+<p><strong>X[k]</strong> : le nombre complexe avec une amplitude et une phase </p>
+<p><strong>|X[k]|</strong>: l’amplitude de la fréquence</p>
+<p><strong>|X[k]|²</strong>: l’énergie de cette fréquence dans le son</p>
+<p>A partir de la FFT , on ne parlera plus du signal temporel qui est la suite d’amplitudes du son à un instant nTe mais plutôt du spectre fréquentiel qui est la suite de nombres complexes représentant l’énergie  de chaque fréquence dans le signal.</p>
+<p><strong>Signal temporel :</strong></p>
+<p>$$
+x[0],\, x[1],\, \dots,\, x[N-1]
+$$</p>
+<p><strong>Spectre fréquentiel :</strong></p>
+<p>$$
+X[0],\, X[1],\, \dots,\, X[N-1]
+$$</p>
+<p>Cette représentation du spectre fréquentiel n’est pas purement juste. C’est plutôt ca:</p>
+<p>$$
+|X[0]|^2,\, |X[1]|^2,\, \dots,\, |X[N-1]|^2
+$$</p>
+<p>Voici le spectre fréquentiel des deux précédentes frames d’un son:</p>
+<p><strong>Frame 0</strong></p>
+<p><img alt="frame40spectrefrequentiel.png" src="../../../Images/frame40spectrefrequentiel.png" /></p>
+<p><strong>Frame 1</strong></p>
+<p><img alt="frame41spectrefrequentiel.png" src="../../../Images/frame41spectrefrequentiel.png" /></p>
+<h4 id="remarque">Remarque<a class="headerlink" href="#remarque" title="Permanent link">&para;</a></h4>
+<p>Il est important de préciser qu’on ne prend que les NFFT/2 premières X[k] parce que la FFT est symétrique.</p>
+<h2 id="banques-filtres-de-mel">Banques Filtres de Mel<a class="headerlink" href="#banques-filtres-de-mel" title="Permanent link">&para;</a></h2>
+<p>Les <strong>banques de filtres Mel</strong> sont le <strong>cœur concret</strong> de l’échelle Mel dans les MFCC.</p>
+<h3 id="pourquoi-a-t-on-besoin-de-banques-de-filtres"><strong>Pourquoi a-t-on besoin de banques de filtres ?</strong><a class="headerlink" href="#pourquoi-a-t-on-besoin-de-banques-de-filtres" title="Permanent link">&para;</a></h3>
+<p>Après la <strong>FFT</strong>, on obtient un <strong>spectre fréquentiel</strong> :</p>
+<ul>
+<li>très détaillé</li>
+<li>avec <strong>des milliers de fréquences</strong> (en Hz)</li>
+<li>trop précis pour être robuste ou utile directement</li>
+</ul>
+<p>Problème :</p>
+<p>l’oreille humaine <strong>ne distingue pas chaque Hz</strong>
+elle regroupe les fréquences proches</p>
+<p>Les banques de filtres Mel font exactement ce regroupement.</p>
+<h3 id="quest-ce-quune-banque-de-filtres-mel"><strong>Qu’est-ce qu’une banque de filtres Mel ?</strong><a class="headerlink" href="#quest-ce-quune-banque-de-filtres-mel" title="Permanent link">&para;</a></h3>
+<p>Une <strong>banque de filtres Mel</strong> est :</p>
+<ul>
+<li>un ensemble de <strong>filtres passe-bande</strong></li>
+<li>généralement <strong>triangulaires</strong></li>
+<li>disposés sur l’axe fréquentiel</li>
+</ul>
+<p>Chaque <strong>filtre</strong> :</p>
+<ul>
+<li>couvre une <strong>bande de fréquences</strong></li>
+<li>produit <strong>un seul nombre</strong> = l’énergie dans cette bande</li>
+</ul>
+<h3 id="pourquoi-des-filtres-triangulaires"><strong>Pourquoi des filtres triangulaires ?</strong><a class="headerlink" href="#pourquoi-des-filtres-triangulaires" title="Permanent link">&para;</a></h3>
+<ul>
+<li>simples à calculer</li>
+<li>recouvrement progressif</li>
+<li>transition douce entre bandes (puisque deux bandes successives se recouvrent)</li>
+</ul>
+<p>On comprend qu’avec ce type de filtres, qu’une fréquence proche du centre a plus de poids qu’une fréquence éloignée du centre. Cela reflète parfaitement la perception humaine.</p>
+<h3 id="placement-des-filtres-lidee-cle"><strong>Placement des filtres : l’idée clé</strong><a class="headerlink" href="#placement-des-filtres-lidee-cle" title="Permanent link">&para;</a></h3>
+<p>Les filtres sont :</p>
+<ul>
+<li><strong>uniformément espacés en Mel (échelle de Mel)</strong></li>
+<li>mais <strong>non uniformément espacés en Hz</strong></li>
+</ul>
+<p><strong>Conséquence directe :</strong></p>
+<ul>
+<li><strong>basses fréquences</strong> → filtres <strong>étroits et nombreux</strong></li>
+<li><strong>hautes fréquences</strong> → filtres <strong>larges et peu nombreux</strong></li>
+</ul>
+<p>Ce qui correspond exactement au comportement de l’oreille.  </p>
+<p>En effet, l’oreille humaine a plus d’aisance à distinguer les sons graves que les sons aigus. Autrement dit, deux sons aigus avec des fréquences proches sonneraient pareilles à notre oreille à la différence de deux sons graves. C’est une observation expérimentale du fonctionnement de l’oreille interne (<strong>la cochlée</strong>).</p>
+<h3 id="construction-etape-par-etape-des-filtres-de-mel"><strong>Construction étape par étape des filtres de Mel</strong><a class="headerlink" href="#construction-etape-par-etape-des-filtres-de-mel" title="Permanent link">&para;</a></h3>
+<h4 id="conversion-hz-mel">Conversion Hz → Mel<a class="headerlink" href="#conversion-hz-mel" title="Permanent link">&para;</a></h4>
+<p>Voici la formule de conversion du Hz en Mel (passer de l’échelle de fréquence en Hz à celle en Mel)</p>
+<p>$$
+f_{\text{mel}} = 2595 \log_{10}\left(1 + \frac{f}{700}\right)
+$$</p>
+<p>On comprend à partir de la formule que l’échelle de Mel est non linéaire (présence du logarithme). </p>
+<p>Si vous effectuez quelques conversions en Mel, vous verrez que plus les fréquences augmentent , moins espacées elles sont c’est à dire que pour les basses fréquences, les valeurs en Mel sont espacées presque linéairement, mais pour les hautes fréquences , les valeurs en Mel sont très proches. </p>
+<p>Voici la courbe de la fonction <strong>fmel</strong> sur <strong>[0,70000]</strong>:</p>
+<p><img alt="courbeMel.png" src="../../../Images/courbeMel.png" /></p>
+<p>On peut voir sur la courbe qu’au début, la courbe ressemble à une droite mais qu’après (hautes fréquences), elle semble se rapprocher d’une valeur constante.</p>
+<h4 id="conversion-mel-hz">Conversion Mel → Hz<a class="headerlink" href="#conversion-mel-hz" title="Permanent link">&para;</a></h4>
+<p>$$
+f = 700 \left(10^{\frac{f_{\text{mel}}}{2595}} - 1\right)
+$$</p>
+<h4 id="definir-les-bornes-frequentielles">Définir les bornes fréquentielles<a class="headerlink" href="#definir-les-bornes-frequentielles" title="Permanent link">&para;</a></h4>
+<p>Ici on définit les valeurs minimale et maximale de la frame.</p>
+<p>$$
+f_{\min} = 0
+$$</p>
+<p>$$
+f_{\max} = \frac{F_s}{2}
+$$</p>
+<h4 id="conversion-des-bornes-en-mel">Conversion des bornes en Mel<a class="headerlink" href="#conversion-des-bornes-en-mel" title="Permanent link">&para;</a></h4>
+<p>$$
+m_{\min} = 2595 \log_{10}\left(1 + \frac{f_{\min}}{700}\right)
+$$</p>
+<p>$$
+m_{\max} = 2595 \log_{10}\left(1 + \frac{f_{\max}}{700}\right)
+$$</p>
+<h4 id="creation-des-points-mel-uniformes">Création des points Mel uniformes<a class="headerlink" href="#creation-des-points-mel-uniformes" title="Permanent link">&para;</a></h4>
+<p>(Si on veut M filtres, il faut M+2 points)</p>
+<p>$$
+m_i = m_{\min} + i \cdot \frac{m_{\max} - m_{\min}}{M+1}, \quad i = 0,1,\dots,M+1
+$$</p>
+<h4 id="conversion-des-points-mel-en-hz">Conversion des points Mel en Hz<a class="headerlink" href="#conversion-des-points-mel-en-hz" title="Permanent link">&para;</a></h4>
+<p>$$
+f_i = 700 \left(10^{\frac{m_i}{2595}} - 1\right)
+$$</p>
+<p>Les fi entre [1,M] correspondent aux fréquences centrales des différents filtres. </p>
+<h4 id="conversion-hz-indices-fft">Conversion Hz → indices FFT<a class="headerlink" href="#conversion-hz-indices-fft" title="Permanent link">&para;</a></h4>
+<p>(Si la FFT a une taille N)</p>
+<p>$$
+k_i = \left\lfloor \frac{N \cdot f_i}{F_s} \right\rfloor
+$$</p>
+<h4 id="definition-du-filtre-triangulaire">Définition du filtre triangulaire<a class="headerlink" href="#definition-du-filtre-triangulaire" title="Permanent link">&para;</a></h4>
+<p>Pour le filtre ( la formule théorique):</p>
+<p>$$
+H_m(f) =\begin{cases}0 &amp; f &lt; f_{m-1} \\frac{f - f_{m-1}}{f_m - f_{m-1}} &amp; f_{m-1} \le f \le f_m \\frac{f_{m+1} - f}{f_{m+1} - f_m} &amp; f_m \le f \le f_{m+1} \0 &amp; f &gt; f_{m+1}\end{cases}
+$$</p>
+<p>De manière pratique, c’est à dire dans l’implémentation des poids, on utilise les indices k et non les fréquences même.</p>
+<p>$$
+H_m(k) =
+\begin{cases}
+0 &amp; k &lt; k_{m-1} \
+\frac{k - k_{m-1}}{k_m - k_{m-1}} &amp; k_{m-1} \le k \le k_m \
+\frac{k_{m+1} - k}{k_{m+1} - k_m} &amp; k_m \le k \le k_{m+1} \
+0 &amp; k &gt; k_{m+1}
+\end{cases}
+$$</p>
+<p>Sur l’image ci dessous , vous pouvez visualiser les filtres triangulaires qui, comme on l’aurait compris plus haut, sont plus nombreux et plus étroits au niveau des basses fréquences et moins nombreux et plus élargis au niveau des hautes fréquences :</p>
+<p><img alt="image.png" src="../../../Images/image.png" /></p>
+<h2 id="spectrogramme-de-mel">Spectrogramme de Mel<a class="headerlink" href="#spectrogramme-de-mel" title="Permanent link">&para;</a></h2>
+<p>Après la construction des filtres de Mel, il faudra déterminer le spectrogramme de Mel. </p>
+<p>Il s’agit d’une matrice (2D) dont chaque ligne correspond à une frame donnée et chaque colonne correspond à un filtre . </p>
+<p>Les valeurs à l’intérieur de cette matrice correspondent à l’énergie globale d’un filtre donné pour une frame donnée. </p>
+<p>Chaque ligne est une suite de <strong>(log(Em))m</strong> avec les <strong>Em</strong> qui sont calculés par la formule suivante:</p>
+<p>Si <strong>|X(k)|²</strong> est le spectre de puissance :</p>
+<p>$$
+E_m = \sum_{k=0}^{N-1} |X(k)|^2 \cdot H_m(k), \quad m= 1,\dots,M
+$$</p>
+<ul>
+<li><strong>|X(k)|²</strong> : l’énergie de chaque fréquence dans le signal ( dans la frame)</li>
+<li><strong>Hm(k)</strong> : le poids de chaque fréquence <strong>fk</strong> dans le filtre m</li>
+</ul>
+<p>Vous pourrez visualiser le spectrogramme de Mel au cours de la partie pratique . Passons à l’étape décisive pour l’obtention de coefficients <strong>cseptraux</strong> efficaces et utilisables pour l’entrainement. </p>
+<h2 id="dct-transformee-discrete-de-cosinus">DCT( Transformée Discrète de Cosinus )<a class="headerlink" href="#dct-transformee-discrete-de-cosinus" title="Permanent link">&para;</a></h2>
+<p>La transformée Discrète de Cosinus (DCT en anglais) est l’application définie comme suit:</p>
+<p>A une matrice M <strong>colonne  de m colonnes.</strong></p>
+<p>$$
+\mathbf{M_1,_m} =\begin{bmatrix}a_1 &amp; a_2 &amp; \cdots &amp; a_m\end{bmatrix}
+$$</p>
+<p>Associe la matrice :</p>
+<p>$$
+\begin{bmatrix}a_1 &amp; a_2 &amp; \cdots &amp; a_M\end{bmatrix}\begin{bmatrix}\phi_0(1) &amp; \phi_1(1) &amp; \cdots &amp; \phi_K(1) \\phi_0(2) &amp; \phi_1(2) &amp; \cdots &amp; \phi_K(2) \\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\phi_0(M) &amp; \phi_1(M) &amp; \cdots &amp; \phi_K(M)\end{bmatrix}=\begin{bmatrix}c_0 &amp; c_1 &amp; \cdots &amp; c_K\end{bmatrix}
+$$</p>
+<p>avec :</p>
+<p>$$
+\phi_k(m) = \cos\left(\frac{\pi k}{M}\left(m - \frac{1}{2}\right)\right)
+$$</p>
+<p>et </p>
+<p>$$
+c_k = \sum_{m=1}^{M} a_m \, \phi_k(m)
+$$</p>
+<p>Dans notre cas , on va considérer la matrice des logs des énergies:</p>
+<p>$$
+\mathbf{logE_m} =\begin{bmatrix}log(E_1) &amp; log(E_2) &amp; \cdots &amp; log(E_m)\end{bmatrix}
+$$</p>
+<p>Et chaque <strong>ck</strong> sera défini par :</p>
+<p>$$
+c_k = \sum_{m=1}^{M} log(E_m) \, \phi_k(m)
+$$</p>
+<h4 id="pourquoi-la-dct">Pourquoi la DCT?<a class="headerlink" href="#pourquoi-la-dct" title="Permanent link">&para;</a></h4>
+<p>La principale raison qui justifie l’usage de la DCT est la décorrélation des coefficients <strong>cseptraux</strong>. </p>
+<p>En fait, si vous revoyez l’image présentant les différents filtres de Mel disposés sur l’axe des fréquences, vous allez remarquer que les filtres se recouvrent entre eux (particulièrement deux filtres successives). </p>
+<p>Ce recouvrement crée une corrélation entre les différentes énergies Em de chaque filtre. </p>
+<p>Cette corrélation provoquerait :</p>
+<ul>
+<li>une répétition des caractéristiques déterminées par les modèles CNN;</li>
+<li>un manque d’informations utiles pour caractériser chaque son ;</li>
+<li>une très mauvaise précision de la reconnaissance à cause de ce manque d’informations par le modèle des CNN.</li>
+</ul>
+<p>Donc grâce à la DCT, les coefficients sont projetés sur des axes orthogonaux les rendant ainsi indépendants . </p>
+<p>Pour comprendre plus mathématiquement et avec plus de précision le lien entre la DCT et l’indépendance des <strong>MFCCs</strong>, recherchez la transformée de <strong>Karhunen-Loueve</strong>.</p>
+<h2 id="mfccs-coefficients-decorreles">MFCCs (coefficients décorrélés )<a class="headerlink" href="#mfccs-coefficients-decorreles" title="Permanent link">&para;</a></h2>
+<p>Il s’agit des coefficients <strong>ck</strong> obtenus grâce à la <strong>DCT</strong>. Il est important de préciser que l’on ne prend que les 12 premiers coefficients en dehors de c0 (puisque c0 représente l’énergie globale de toute la frame ). </p>
+<p>Voici un tableau récapitulant les 13 coefficients et leur signification physique à partir de c0:</p>
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Nom courant</th>
+<th>Information portée (interprétation physique)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>c₀</strong></td>
+<td>Énergie globale</td>
+<td>Énergie moyenne du signal (souvent remplacé par log-énergie réelle)</td>
+</tr>
+<tr>
+<td><strong>c₁</strong></td>
+<td>Pente spectrale</td>
+<td>Grave ↔ aigu (spectre montant ou descendant)</td>
+</tr>
+<tr>
+<td><strong>c₂</strong></td>
+<td>Courbure globale</td>
+<td>Spectre plutôt creusé ou bombé</td>
+</tr>
+<tr>
+<td><strong>c₃</strong></td>
+<td>Structure large</td>
+<td>Position générale des formants</td>
+</tr>
+<tr>
+<td><strong>c₄</strong></td>
+<td>Formants</td>
+<td>Séparation grossière des formants</td>
+</tr>
+<tr>
+<td><strong>c₅</strong></td>
+<td>Formants</td>
+<td>Détails moyens du timbre</td>
+</tr>
+<tr>
+<td><strong>c₆</strong></td>
+<td>Formants</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td><strong>c₇</strong></td>
+<td>Formants</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td><strong>c₈</strong></td>
+<td>Détails fins</td>
+<td>Début des détails plus fins</td>
+</tr>
+<tr>
+<td><strong>c₉</strong></td>
+<td>Détails fins</td>
+<td>Micro-variations spectrales</td>
+</tr>
+<tr>
+<td><strong>c₁₀</strong></td>
+<td>Bruit</td>
+<td>Texture / rugosité</td>
+</tr>
+<tr>
+<td><strong>c₁₁</strong></td>
+<td>Bruit</td>
+<td>Composantes rapides</td>
+</tr>
+<tr>
+<td><strong>c₁₂</strong></td>
+<td>Bruit</td>
+<td>Détails très fins</td>
+</tr>
+</tbody>
+</table>
+<h4 id="remarque_1"><strong>Remarque</strong><a class="headerlink" href="#remarque_1" title="Permanent link">&para;</a></h4>
+<p>La raison pour laquelle on ne choisit que les 12 premiers coefficients est simple.</p>
+<p>En fait, à partir de <strong>c10</strong>, les fonctions de la DCT présentent plus d’oscillations, donc les coefficients obtenus de la somme contiennent trop d’informations, ce qui rend difficile leur interprétation. C’est pour cela on les considère comme du bruit et on trouve suffisant le bruit déjà apporté par les c10, c11 et c12. En ajoutant, c13, c14, etc, ce serait trop de bruits dans nos données.</p>
+<h2 id="b-phase-pratique">b. Phase pratique<a class="headerlink" href="#b-phase-pratique" title="Permanent link">&para;</a></h2>
+<p>Pour cette partie, on aura besoin de la librairie <strong>Librosa</strong>. Je vous propose de créer un environnement Conda dans lequel vous installerai toutes les dépendances nécessaires.</p>
+<h2 id="installation-de-librosa">Installation de <code>librosa</code><a class="headerlink" href="#installation-de-librosa" title="Permanent link">&para;</a></h2>
+<h3 id="methode-recommandee-pip">🔹 Méthode recommandée (pip)<a class="headerlink" href="#methode-recommandee-pip" title="Permanent link">&para;</a></h3>
+<p>Dans ton <strong>terminal / invite de commande</strong> :</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>librosa
+</code></pre></div>
+<p>Si tu as <strong>plusieurs versions de Python</strong> :</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>librosa
+</code></pre></div>
+<p>ou</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>librosa
+</code></pre></div>
+<hr />
+<h3 id="dependances-importantes">🔹 Dépendances importantes<a class="headerlink" href="#dependances-importantes" title="Permanent link">&para;</a></h3>
+<p><code>librosa</code> installe automatiquement :</p>
+<ul>
+<li><code>numpy</code></li>
+<li><code>scipy</code></li>
+<li><code>soundfile</code></li>
+<li><code>audioread</code></li>
+</ul>
+<p>Si tu as une erreur liée à <code>soundfile</code>, installe-le explicitement :</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>soundfile
+</code></pre></div>
+<hr />
+<h3 id="verification">🔹 Vérification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h3>
+<p>Dans Python :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">librosa</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</code></pre></div>
+<p>Si aucune erreur → ✅ installation réussie.</p>
+<h2 id="pratique-proprement-dit">Pratique proprement dit<a class="headerlink" href="#pratique-proprement-dit" title="Permanent link">&para;</a></h2>
+<p>Pour le reste , suivez les étapes dans le NoteBook qui vous  a été donné.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy", "search.suggest"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
